@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float speed = 10.0f;
     public float xRange = 10;
+    public float verticalInput;
+    //public float yRange = 10;
 
     public GameObject projectilePrefab;
 
@@ -19,6 +21,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        verticalInput = Input.GetAxis("Vertical");
+        Vector3 playerMovement = new Vector3(horizontalInput, 0, verticalInput);
+        transform.Translate(Vector3.ClampMagnitude(playerMovement, 1) * (speed * Time.deltaTime));
+
+
+        //Player Side Movements
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
 
