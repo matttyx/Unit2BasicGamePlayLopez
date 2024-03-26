@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Player Vertical Movements
         verticalInput = Input.GetAxis("Vertical");
         Vector3 playerMovement = new Vector3(horizontalInput, 0, verticalInput);
         transform.Translate(Vector3.ClampMagnitude(playerMovement, 1) * (speed * Time.deltaTime));
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
+        //Projectile
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //Launch a projectile from the player
